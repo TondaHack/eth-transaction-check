@@ -15,6 +15,6 @@ defmodule UtrustPayment.MixProject do
   #
   # Run "mix help deps" for examples and options.
   defp deps do
-    []
+    [{:credo, "~> 0.9.1", only: [:dev, :test], runtime: false}]
   end
 end
