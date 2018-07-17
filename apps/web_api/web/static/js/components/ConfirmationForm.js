@@ -1,51 +1,73 @@
-import React from "react";
+import React from 'react';
 
 class ConfirmationForm extends React.Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
 
-    this.sendTxhash = this.sendTxhash.bind(this)
-    this.onChange = this.onChange.bind(this)
+    this.sendTxhash = this.sendTxhash.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.state = {
-      value: "",
+      value: '',
       valid: false,
-      active: false
-    }
+      active: false,
+      error: '',
+    };
   }
 
-  sendTxhash(e)  {
-    e.preventDefault()
+  onChange(e) {
+    this.setState({ value: e.target.value, active: false, error: '' });
+  }
 
-    if(this.state.value) {
-      fetch(`http://localhost:4000/api/v1/confirmation/${this.state.value}`, {
+  sendTxhash(e) {
+    const { value } = this.state;
+    e.preventDefault();
+
+    if (value) {
+      window.fetch(`http://localhost:4000/api/v1/confirmation/${value}`, {
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       })
-      .then(response => response.json())
-      .then(json => this.setState({valid: json.valid, active: true}))
-      .catch(console.error)
+        .then((response) => {
+          if (response.status === 400) {
+            this.setState({ error: 'Invalid Request!' });
+            return response;
+          }
+          return response
+            .json()
+            .then(json => this.setState({ valid: json.valid, active: true }));
+        });
     }
-  }
-
-  onChange(e){
-    this.setState({value: e.target.value, active: false})
   }
 
   render() {
-    const { value, valid, active } = this.state
+    const {
+      value, valid, active, error,
+    } = this.state;
+    const validText = `${valid ? 'Confirmed' : 'Not Confirmed'} transaction!`;
 
     return (
       <div className="App">
         <header className="App-header">
-          <input onChange={this.onChange} value={this.state.value} />
-          <button onClick={this.sendTxhash}>Send</button>
+          <input onChange={this.onChange} value={value} />
+          <button type="submit" onClick={this.sendTxhash}>
+            Send
+          </button>
         </header>
         <section>
           {
-            active &&
-              <div>Token {value} is {valid ? "valid" : "invalid"}</div>
+            active
+              && (
+              <div>
+                {validText}
+              </div>
+              )
             }
+          {error && (
+          <div>
+            {error}
+          </div>
+          )}
         </section>
       </div>
     );
