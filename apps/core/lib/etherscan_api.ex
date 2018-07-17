@@ -21,6 +21,6 @@ defmodule Core.EtherscanApi do
   end
 
   defp resolve_response(_wrong_response) do
-    {:error, "Transaction doesn't exists"}
+    {:error, "Transaction doesn't exist!"}
   end
 end

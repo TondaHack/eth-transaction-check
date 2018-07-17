@@ -44,7 +44,7 @@ defmodule PaymentValidationTest do
             {:ok, %HTTPoison.Response{status_code: 200, body: {:ok, %{"blockNumber" => "0x1F4"}}}}
         end
       end do
-      assert {:error, "Invalid Request"} == PaymentValidation.validate("transactionHash")
+      assert {:error, "Not Found"} == PaymentValidation.validate("transactionHash")
     end
   end
 end

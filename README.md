@@ -1,4 +1,4 @@
-# Utrust Payment Confirmation
+# Transaction Confirmation
 
 This project is separated into two apps, Core and WebApi.
 
@@ -27,13 +27,13 @@ WebApi is Pheonix application including REST API (scope `api/v1/`) and very simp
   * Run cmd app `API_KEY="YourApiKeyToken" iex -S mix`
 
 ## WebApi
-  REST API and web client. The client fills the input at web application with txhash and submit. REST API returns the confirmation status of transaction or error when transaction doesn't exist. WebApi uses Core application.
+  REST API and web client. The client fills the input at web application with txhash and submit. REST API returns the confirmation status of transaction or error when something is wrong. WebApi uses Core application as umbrella dependency.
   * Install dependencies with `mix deps.get`
   * Install Node.js dependencies with `npm install`
   * Start Phoenix endpoint with `API_KEY="YourApiKeyToken" mix phoenix.server`
 
 ### JS
-  Simple React Application using Brunch (Next time I would like to use Webpack)
+  Simple React Application using Brunch (Looking forward Webpack in next version of Phoenix)
   * eslint - `npm lint` (airbnb rules)
 
 ## Tests
@@ -46,11 +46,12 @@ WebApi is Pheonix application including REST API (scope `api/v1/`) and very simp
  * `mix credo apps/web_api/`
 
  ## Possible next steps
-  * More tests - ``
-  * Cypress tests for frontend
-  * Cors - handle specific clients
-  * Add Dializer
+  * More tests
+  * Better handling api error from Etherscan
+  * Cors (cors_plug, corsia, etc...)
   * Different environment (stage, production, test)
   * CI - running test and coverage at CI
+  * Add Dializer
+  * Cypress tests for frontend
   * Automatic deployment process
 

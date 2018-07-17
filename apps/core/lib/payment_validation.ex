@@ -1,6 +1,6 @@
 defmodule Core.PaymentValidation do
   @moduledoc """
-    Provides validation of ETH transaction.
+    Provides confirmations check of ETH transaction.
   """
   require Logger
   alias Core.EtherscanApi
@@ -12,7 +12,7 @@ defmodule Core.PaymentValidation do
       {:ok, parse_hex(latest_block_number) - parse_hex(block_number) > 2}
     else
       {:error, reason} ->
-        Logger.error(fn ->
+        Logger.info(fn ->
           "No result for #{txhash}: #{inspect(reason)}"
         end)
 
