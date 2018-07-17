@@ -16,7 +16,7 @@ defmodule Core.PaymentValidation do
           "No result for #{txhash}: #{inspect(reason)}"
         end)
 
-        {:error, "Invalid Request"}
+        {:error, reason}
     end
   end
 

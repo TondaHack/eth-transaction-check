@@ -3,7 +3,7 @@
 use Mix.Config
 
 config :core,
-  api_key: "41DFQ4NTIR61DNJS5TX6RQSHDXJV9ZW4ZN",
+  api_key: System.get_env("API_KEY"),
   api_url: "https://api.etherscan.io/api"
 
 # This configuration is loaded before any dependency and is restricted
