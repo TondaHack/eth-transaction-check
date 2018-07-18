@@ -46,6 +46,10 @@ WebApi is Pheonix application including REST API (scope `api/v1/`) and very simp
  * `mix credo apps/core/`
  * `mix credo apps/web_api/`
 
+## Requirements
+ * Elixir 1.6
+ * Node.js 8.9.3
+
  ## Possible next steps
   * More tests
   * Better handling api error from Etherscan
