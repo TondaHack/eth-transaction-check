@@ -35,7 +35,7 @@ WebApi is Pheonix application including REST API (scope `api/v1/`) and very simp
 
 ### JS
   Simple React Application using Brunch (Looking forward Webpack in next version of Phoenix)
-  * eslint - `npm lint` (airbnb rules)
+  * eslint - `npm run lint` (airbnb rules)
 
 ## Tests
   * all tests: `mix test`

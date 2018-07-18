@@ -35,7 +35,7 @@ class ConfirmationForm extends React.Component {
           }
           return response
             .json()
-            .then(json => this.setState({ valid: json.valid, active: true, error: "" }));
+            .then(json => this.setState({ valid: json.valid, active: true, error: '' }));
         });
     }
   }
