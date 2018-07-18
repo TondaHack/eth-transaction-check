@@ -6,6 +6,8 @@ The Core app marks the transaction as valid when it has at least 2 confirmations
 
 WebApi is Pheonix application including REST API (scope `api/v1/`) and very simple React application (scope `/`). REST API and WEB application are in one module and when the app will crease they could be separated.
 
+Both applications include tests. The Core app includes mocked test to check functionality without Eherscan impact and WebAPI includes tests without mocks to check the whole integration. More tests are needed and It could be done as next step of development.
+
 ## ENV
   * API_KEY="YourEtherscanApiKeyToken"
 
