@@ -1,4 +1,4 @@
-defmodule UtrustPayment.MixProject do
+defmodule EthTransactionCheck.MixProject do
   use Mix.Project
 
   def project do

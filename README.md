@@ -1,8 +1,8 @@
-# Transaction Confirmation
+# ETH Transaction Check
 
 This project is separated into two apps, Core and WebApi.
 
-The Core app marks the transaction as valid when it has at least 2 confirmations. The Core app could be used as command-line application or called in other umbrella apps as well.
+The Core app marks the transaction as valid when it has at least 2 confirmations. The Core app could be used as command-line application or in other umbrella apps as well.
 
 WebApi is Pheonix application including REST API (scope `api/v1/`) and very simple React application (scope `/`). REST API and WEB application are in one module and when the app will crease they could be separated.
 
@@ -26,11 +26,13 @@ Both applications include tests. The Core app includes mocked test to check func
 
 ## Core
   The Core app includes two modules. The first one is `PaymentValidation` that check a number of confirmations. The second one is `EtherscanApi` that wraps `HTTPoison.Base` functionality and provide Etherscan API.
+  * Open Core folder `cd apps/core/`
   * Install dependencies with `mix deps.get`
   * Run cmd app `API_KEY="YourApiKeyToken" iex -S mix`
 
 ## WebApi
   REST API and web client. The client fills the input at web application with txhash and submit. REST API returns the confirmation status of transaction or error when something went wrong. WebApi uses Core application as umbrella dependency.
+  * Open WebApi folder `cd apps/web_api/`
   * Install dependencies with `mix deps.get`
   * Install Node.js dependencies with `npm install`
   * Start Phoenix endpoint with `API_KEY="YourApiKeyToken" mix phoenix.server`
